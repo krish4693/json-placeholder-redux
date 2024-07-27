@@ -13,14 +13,14 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-     <div>
-    <Navbar/>
+    <div>
+      <Navbar />
 
-    <Album/>
-    <Footer/>
+      <Album />
+      <Footer />
 
-   </div>
-  
+    </div>
+
   )
 }
 
