@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
-
+import '../styles/Album.css'
 import { fetchAlbum } from '../redux/slice/albumslicer'
 
 
@@ -17,7 +17,9 @@ const album = () => {
       {
         data.isLoading ? <h1>Loading....</h1>:
         data.data.map(album=>{
-          return <p>{album.title}</p>
+          return (
+          <><div className='album-list-item'><p>{album.title}</p><button>Add to cart</button></div></>
+        )
         })
       }
       </div>

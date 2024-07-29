@@ -10,8 +10,16 @@ const albumSlice=createSlice({
     initialState:{
         isLoading:false,
         data:[],
-        error:false
+        error:false,
+        cart:[]
     },
+    reducers:{
+        addToCart:(state,action)=>{
+            state.cart.push(action.payload)
+        },
+        removeFromCart:(state,action)=>{
+            state.cart=state.cart.filter(item=>item.id!=action.payload.id)
+    }},
     extraReducers:(builder)=>{
         builder.addCase(fetchAlbum.pending,(state,action)=>{
             state.isLoading=true
