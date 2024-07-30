@@ -10,6 +10,7 @@ const albumSlice = createSlice({
     name: 'album',
     initialState: {
         isLoading: false,
+        isFetched:false,
         data: [],
         error: false,
         cart: []
@@ -17,8 +18,7 @@ const albumSlice = createSlice({
     reducers: {
         addToCart: (state, action) => {
             state.cart.push(action.payload);
-            console.log(state.cart'
-                )
+            console.log(state.cart)
             console.log("Cart length after add:", state.cart.length); // Debugging
         },
         removeFromCart: (state, action) => {
@@ -32,6 +32,7 @@ const albumSlice = createSlice({
         builder.addCase(fetchAlbum.fulfilled, (state, action) => {
             state.isLoading = false;
             state.data = action.payload;
+            state.isFetched = true;
         });
         builder.addCase(fetchAlbum.rejected, (state) => {
             state.error = true;

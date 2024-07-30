@@ -2,10 +2,21 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import '../styles/Album.css'
 import { fetchAlbum, addToCart } from '../redux/slice/albumslicer'
+import Navbar from './Navbar'
 
 const Album = () => {
   // Initialize dispatch to send actions to the Redux store
   const dispatch = useDispatch()
+  
+
+  const isFetched = useSelector(state => state.album.isFetched); // Adjust the path if necessary
+
+  useEffect(() => {
+    if (!isFetched) {
+      dispatch(fetchAlbum());
+      console.log("Data fetched");
+    }
+  }, [isFetched, dispatch]); // Add isFetched and dispatch as dependencies
   
   // Access the album state from the Redux store
   const data = useSelector(state => state.album)
@@ -22,6 +33,7 @@ const Album = () => {
 
   return (
     <div>
+      <Navbar/>
       {
         // Conditional rendering based on whether data is loading
         data.isLoading ? (

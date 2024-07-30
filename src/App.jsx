@@ -7,12 +7,7 @@ import { useDispatch } from 'react-redux';
 // router
 
 function App() {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    // Dispatch the fetchAlbum action to load album data
-    dispatch(fetchAlbum())
-  }, [])
+  
 
   return (
     <div>
