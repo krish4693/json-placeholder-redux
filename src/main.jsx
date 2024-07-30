@@ -5,6 +5,7 @@ import './index.css';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import Cart from './pages/Cart.jsx';
+import { useEffect } from 'react';
 //importing error page
 import Notfound from './pages/Notfound.jsx';
 // Importing the necessary modules from react-router-dom for routing
@@ -32,15 +33,12 @@ const router = createBrowserRouter([
 
 // Rendering the application into the root element
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    {/* Wrapping the entire application with the Redux Provider to make the store available throughout the app */}
-    <Provider store={store}>
-      {/* Navbar component to display the navigation bar */}
-      <Navbar />
-      {/* Wrapping the main application with the RouterProvider to enable routing */}
-      <RouterProvider router={router}/>
-      {/* Footer component to display the footer */}
-      <Footer />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    {/* Navbar component to display the navigation bar */}
+    <Navbar />
+    {/* Wrapping the main application with the RouterProvider to enable routing */}
+    <RouterProvider router={router}/>
+    {/* Footer component to display the footer */}
+    <Footer />
+  </Provider>,
 );
