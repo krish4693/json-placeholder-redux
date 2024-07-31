@@ -23,7 +23,8 @@ const Album = () => {
   };
 
   return (
-    <div>
+    <div className='album-container'>
+      <div className='album-nav-contaier'>
       <Navbar/>
       {
         data.isLoading ? (
@@ -37,6 +38,8 @@ const Album = () => {
           ))
         )
       }
+      </div>
+      
       <Footer/>
     </div>
   );
