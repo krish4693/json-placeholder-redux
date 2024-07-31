@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import Album from './components/Album.jsx';
 import './index.css';
-import Navbar from './components/Navbar.jsx';
-import Footer from './components/Footer.jsx';
 import Cart from './pages/Cart.jsx';
 import Notfound from './pages/Notfound.jsx';
 import {
@@ -22,7 +20,9 @@ const router = createBrowserRouter([
   },
   {
     path: '/cart',
-    element: <Cart />
+    element: <Cart />,
+    errorElement:<Notfound/>
+  
   }
 ]);
 
@@ -30,6 +30,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     {/* <Navbar /> */}
     <RouterProvider router={router} />
-    <Footer />
   </Provider>,
 );

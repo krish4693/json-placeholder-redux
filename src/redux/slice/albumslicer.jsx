@@ -10,19 +10,28 @@ const albumSlice = createSlice({
     name: 'album',
     initialState: {
         isLoading: false,
-        isFetched:false,
         data: [],
         error: false,
-        cart: []
+        cart: [],
+        isFetched: false,
     },
     reducers: {
         addToCart: (state, action) => {
             state.cart.push(action.payload);
-            console.log(state.cart)
+            console.log(state.cart);
             console.log("Cart length after add:", state.cart.length); // Debugging
         },
         removeFromCart: (state, action) => {
             state.cart = state.cart.filter(item => item.id !== action.payload.id);
+        },
+        removeFromAlbum: (state, action) => {
+            state.data = state.data.filter(album => album.id !== action.payload.id);
+        },
+        addToAlbum: (state, action) => {
+            state.data.push(action.payload);
+        },
+        setFetched: (state, action) => {
+            state.isFetched = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -40,5 +49,5 @@ const albumSlice = createSlice({
     }
 });
 
-export const { addToCart, removeFromCart } = albumSlice.actions;
+export const { addToCart, removeFromCart, removeFromAlbum, addToAlbum, setFetched } = albumSlice.actions;
 export default albumSlice.reducer;
